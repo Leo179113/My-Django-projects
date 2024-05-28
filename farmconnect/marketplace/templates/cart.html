@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Your Shopping Cart</h2>
+    <div class="product-list">
+        {% for item in items %}
+        <div class="product-item">
+            <p>{{ item.product.name }} ({{ item.quantity }})</p>
+            <p>Price: ${{ item.product.price }}</p>
+            <a href="{% url 'cart:remove_from_cart' item.id %}">Remove</a>
+        </div>
+        {% empty %}
+        <p>Your cart is empty.</p>
+        {% endfor %}
+    </div>
+
+    <p>Total Price: ${{ total_price }}</p>
+
+    <a href="{% url 'product_list' %}">Continue Shopping</a>
+</div>
+{% endblock %}

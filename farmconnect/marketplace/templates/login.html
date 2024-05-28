@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        background-image: url('{% static "marketplace/images/1.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .container-fluid {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        width: 400px; /* Adjust as needed */
+        
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+    }
+
+    .card-header {
+        background: rgba(0, 0, 0, 0.1);
+        border-bottom: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Login</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">Username</label>
+                            <input type="text" id="id_username" name="username" class="form-control" placeholder="Enter your username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_password" class="form-label">Password</label>
+                            <input type="password" id="id_password" name="password" class="form-control" placeholder="Enter your password">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
